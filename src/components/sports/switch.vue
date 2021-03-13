@@ -1,9 +1,9 @@
 <template>
-      <div class="switch-wrapper-small">
-        <div class="option_one" v-on:click="switch_('Home')"/>
-            <p :class="text_class_one">LAA<p/>
-        <div class="option_two" v-on:click="switch_('Away')"/>
-            <div :class="text_class_two">SEA</div>
+      <div class="switch-wrapper">
+        <div class="option_one" v-on:click="switch_('American')"/>
+            <p :class="text_class_one">Amer.<p/>
+        <div class="option_two" v-on:click="switch_('Ancient')"/>
+            <div :class="text_class_two">Anci.</div>
         <input v-model="checkbox" type="checkbox" class="checkbox" id="checkbox"/>
         <label for="checkbox" class="switch"></label>
     </div>
@@ -18,33 +18,33 @@ export default {
   // define methods under the `methods` object
   methods: {
     switch_: function (sport) {
-        if (sport == 'Away') {
+        if (sport == 'Ancient') {
             if (!this.checkbox) {
-                this.$store.commit('current_team_baseball',!this.$store.state.away_home_baseball)
+                this.$store.commit('current_sport',!this.$store.state.sport_checkbox)
             }
         }
-        else if (sport == 'Home') {
+        else if (sport == 'American') {
             if (this.checkbox) {
-                this.$store.commit('current_team_baseball',!this.$store.state.away_home_baseball)
+                this.$store.commit('current_sport',!this.$store.state.sport_checkbox)
             }
         }
     }
     },
     computed: {
       checkbox: function() {
-        return this.$store.state.away_home_baseball
+        return this.$store.state.sport_checkbox
       },
       // assuming this is the text on the left
       text_class_one: function () {
             if (!this.checkbox)
-                return "toggle_text_one active_laa"
+                return "toggle_text_one active_crimson"
             else   
                 return "toggle_text_one not_active"
       },
       // assuming this is the text on the right
       text_class_two: function () {
             if (this.checkbox)
-                return "toggle_text_two active_sea"
+                return "toggle_text_two active_orange"
             else  
                 return "toggle_text_two not_active"
       }
@@ -52,14 +52,13 @@ export default {
   }
 </script>
 <style lang="scss">
-.switch-wrapper-small {
+.switch-wrapper {
   position: relative;
   display: block;
-  width: 250px;
-  margin: 1rem auto 0;
-
+  width: 330px;
+  margin: 3rem auto 0;
   .option_one{
-    width: 125px;
+    width: 165px;
     height: 50px;
     position: absolute;
     z-index: 2;
@@ -84,17 +83,14 @@ export default {
       pointer-events: none;
       transition: all 0.3s;
   }
-
-
   .option_two{
-    width: 125px;
-    left: 125px;
+    width: 165px;
+    left: 165px;
     height: 50px;
     position: absolute;
     z-index: 2;
     cursor: pointer;
   }
-
   .toggle_text_two {
       font-family: 'Nunito', sans-serif;
       position: absolute;
@@ -113,35 +109,31 @@ export default {
       pointer-events: none;
       transition: all 0.3s;
   }
-
-  .active_laa {
+  .active_crimson {
       color: #aa0a0a
   }
   
-  .active_sea {
-      color: #005C5C
+  .active_orange {
+      color: #e67417
   }
-
   .not_active {
       color: #878787
   }
-
   .switch {
     position: relative;
     display: block;
     width: 100%;
-    height: 40px;
+    height: 50px;
     margin: 0;
     border: 3px solid #F0F0F0;
     border-radius: 20px;
     transition: all 0.3s;
     background: #F0F0F0;
-
     &::before {
       position: absolute;
       top: 0;
       left: 0;
-      width: 125px;
+      width: 165px;
       height: 100%;
       background-color: rgb(255, 255, 255);
       border-radius: 18px;
@@ -149,15 +141,12 @@ export default {
       transition: all 0.3s;
     }
   }
-
   .checkbox {
     display: none;
-
     &:checked + .switch {
       background-color: #F0F0F0;
-
       &::before {
-        left : 118px;
+        left : 159px;
       }
     }
   }

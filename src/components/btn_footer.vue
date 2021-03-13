@@ -20,9 +20,9 @@
     computed: {
       sportIcon: function() {
         if (this.$store.state.sport_checkbox)
-          return "fa-basketball-ball"
+          return "fa-landmark"
         else 
-          return "fa-baseball-ball"
+          return "fa-flag-usa"
       },
       buttonColorClass: function() {
       if (this.$store.state.sport_checkbox) 

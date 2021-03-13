@@ -1,4 +1,4 @@
-# score_app
+# Crypto History Website
 
 ## Project setup
 ```

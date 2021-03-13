@@ -1,25 +1,25 @@
 <template>
     <div>
-        <sports-switch @switch_clicked="switch_navigation"/>
+        <his-switch @switch_clicked="switch_navigation"/>
         <transition name="fade" mode="out-in">
-            <baseball v-if="!this.$store.state.sport_checkbox"/>
-            <basketball v-if="this.$store.state.sport_checkbox"/>
+            <american v-if="!this.$store.state.sport_checkbox"/>
+            <anchient v-if="this.$store.state.sport_checkbox"/>
         </transition>
     </div>
 </template>
 <script>
-import sportsSwitch from './misc/sportsSwitch';
+import hisSwitch from './switch';
 
-import baseball from './baseball';
-import basketball from './basketball';
+import american from './american_history';
+import anchient from './anc_history';
 
 export default {
   name: 'sports_layout',
 
   components: {
-    sportsSwitch,
-    baseball,
-    basketball
+    hisSwitch,
+    american,
+    anchient
   },
 
   data: () => ({

@@ -9,35 +9,10 @@
     >
       <div class="container" style="display: flex; justify-content: center;">
         <h1 style="position: relative;" class="app_title">{{page_title}}</h1>
-
-        <div style="width: 180px;"></div>
-
-        <!--This will refresh the data -->
-        <v-btn
-          style="position: relative;" 
-          :ripple="false"
-          id="no-background-hover"
-          class="app_title_button"
-          icon
-          @click="reload=!reload; mlbDataFetch(); nbaDataFetch();"
-        >
-
-          <v-icon :color="topIconColor" :class="icon_class" large>fa-sync-alt</v-icon>
-        </v-btn>
       </div>
     </v-app-bar>
     
         <v-main :class="background_class">
-            <v-snackbar
-              style=""
-              v-model="reload"
-              :color="topIconColor"
-              :timeout="750"
-              centered
-              rounded="pill"
-              >
-              Games have been refreshed!           
-            </v-snackbar>
             <transition name="fade" mode="out-in">
             <sports-layout v-if="top_level_navigation == 'sports'" key="sports"/>
             <info-layout v-if="top_level_navigation == 'info'" key="info"/>
@@ -65,7 +40,7 @@ export default {
   },
 
   data: () => ({
-    page_title: "Scores",
+    page_title: "Crypto-History",
     top_level_navigation: 'sports',
     reload: false,
   }),
@@ -113,55 +88,11 @@ export default {
     navigation (value) {
       this.top_level_navigation = value
       if (this.top_level_navigation == 'sports')
-        this.page_title = "Scores"
+        this.page_title = "Crypto-History"
       if (this.top_level_navigation == 'info')
         this.page_title = "Information"
     },
-    mlbDataFetch() {
-      fetch("http://localhost:3000/mlb_game", {
-        method: 'GET', // *GET, POST, PUT, DELETE, etc.
-      })
-        .then(async response => {
-          const data = await response.json();
-          this.$store.commit('updating_mlb',data[0])
-          console.log(this.$store.state.mlb_game)
-          // check for error response
-          if (!response.ok) {
-            // get error message from body or default to response statusText
-            const error = (data && data.message) || response.statusText;
-            return Promise.reject(error);
-          }
-        })
-        .catch(error => {
-          this.errorMessage = error;
-          console.error("There was an error!", error);
-        });
-    },
-    nbaDataFetch() {
-      fetch("http://localhost:3000/nba_game", {
-        method: 'GET', // *GET, POST, PUT, DELETE, etc.
-      })
-        .then(async response => {
-          const data = await response.json();
-          this.$store.commit('updating_nba',data[0])
-          console.log(this.$store.state.nba_game)
-          // check for error response
-          if (!response.ok) {
-            // get error message from body or default to response statusText
-            const error = (data && data.message) || response.statusText;
-            return Promise.reject(error);
-          }
-        })
-        .catch(error => {
-          this.errorMessage = error;
-          console.error("There was an error!", error);
-        });
-    } 
   },
-  created() {
-    this.mlbDataFetch();
-    this.nbaDataFetch();
-  }
 };
 </script>
 <style lang="scss">
