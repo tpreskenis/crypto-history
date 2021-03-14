@@ -1,20 +1,17 @@
 <template>
-    <div>
-        <project-info/>
-        <contact-button/>
+    <div class="test">
+        <welcome-info/>
     </div>
 </template>
 <script>
 
-import projectInfo from './projectInfo';
-import contactButton from './contact';
+import welcomeInfo from './welcome_card';
 
 export default {
-  name: 'information_layout',
+  name: 'welcome_layout',
 
   components: {
-      projectInfo,
-      contactButton
+      welcomeInfo,
   },
 
   data: () => ({

@@ -2,30 +2,30 @@
   <v-app>
     <v-app-bar
       app
-      style="height: 70px;"
       color="white"
-      dark
       flat
+      style="height: 76px;"
     >
-      <div class="container" style="display: flex; justify-content: center;">
-        <h1 style="position: relative;" class="app_title">{{page_title}}</h1>
-      </div>
+    <vue-header @nav_clicked="navigation"/>
     </v-app-bar>
     
         <v-main :class="background_class">
             <transition name="fade" mode="out-in">
+            <welcome-layout v-if="top_level_navigation == 'welcome'" key="welcome"/>
             <sports-layout v-if="top_level_navigation == 'sports'" key="sports"/>
             <info-layout v-if="top_level_navigation == 'info'" key="info"/>
             </transition>
         </v-main>
-    <vue-footer @nav_clicked="navigation"/>
+      <waves/>
   </v-app>
 </template>
 
 <script>
 
-import vueFooter from './components/btn_footer';
+import vueHeader from './components/btn_header';
+import waves from './components/waves'
 
+import welcomeLayout from './components/welcome/layout';
 import infoLayout from './components/info/layout';
 import sportsLayout from './components/sports/layout';
 
@@ -34,23 +34,19 @@ export default {
   name: 'App',
 
   components: {
-    vueFooter,
+    waves,
+    vueHeader,
+    welcomeLayout,
     sportsLayout,
     infoLayout
   },
 
   data: () => ({
-    page_title: "Crypto-History",
-    top_level_navigation: 'sports',
+    page_title: "Welcome",
+    top_level_navigation: 'welcome',
     reload: false,
   }),
   computed: {
-    icon_class: function() {
-      if (this.reload == true)
-        return "app_title_button_icon spin_icon"
-      else 
-        return "app_title_button_icon"
-    },
     background_class: function() {
       if (this.top_level_navigation == 'sports' && this.$store.state.sport_checkbox) {
         // Basketball
@@ -65,7 +61,7 @@ export default {
         return "info_background"
       }
       else 
-        return "info_background"
+        return "welcome_background"
     },
     topIconColor: function() {
       if (this.top_level_navigation == 'sports' && this.$store.state.sport_checkbox) {
@@ -91,6 +87,8 @@ export default {
         this.page_title = "Crypto-History"
       if (this.top_level_navigation == 'info')
         this.page_title = "Information"
+      if (this.top_level_navigation == 'welcome')
+        this.page_title = "Welcome"
     },
   },
 };
@@ -159,16 +157,24 @@ export default {
 }
 
 .baseball_background {
-  margin-bottom: 56px;
-  background: linear-gradient(180deg, rgba(170,10,10,1) 0%, rgba(252,170,170,1) 27%, rgba(247,247,247,1) 67%, rgba(235,235,235,1) 100%);
+  padding: 10px !important;
+  align-items: center;
+  background: linear-gradient(60deg, rgb(0, 119, 255) 0%, rgb(138, 202, 255) 100%);
 }
 .basketball_background {
-  margin-bottom: 56px;
-  background: linear-gradient(180deg, rgba(255,132,0,1) 0%, rgba(224,146,0,1) 27%, rgba(235,235,235,1) 67%, rgba(235,235,235,1) 100%);
+  padding: 10px !important;
+  align-items: center;
+  background: linear-gradient(60deg, rgb(255, 115, 0) 0%, rgb(213, 199, 0) 100%);
 }
 .info_background {
-  margin-bottom: 56px;
-  background: linear-gradient(180deg, rgba(0,168,255,1) 0%, rgba(0,140,213,1) 27%, rgba(235,235,235,1) 67%, rgba(235,235,235,1) 100%);
+  padding: 10px !important;
+  align-items: center;
+  background: linear-gradient(60deg, rgba(0,168,255,1) 0%, rgb(0, 213, 142) 100%);
+}
+.welcome_background {
+    padding: 10px !important;
+    align-items: center;
+    background: linear-gradient(60deg,rgb(183, 58, 146) 0%,rgb(193, 0, 48) 100%);
 }
 
 </style>

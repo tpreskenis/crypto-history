@@ -1,5 +1,5 @@
 <template>
-  <v-bottom-navigation
+  <v-bottom-navigation style="height: 76px;"
    :value="value"
     color="primary"
     grow
@@ -18,7 +18,7 @@
 </template>
 <script>
   export default {
-    name: "btn-footer",
+    name: "btn-header",
     data: () => ({ value: 0 }),
     computed: {
       sportIcon: function() {

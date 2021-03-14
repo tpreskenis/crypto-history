@@ -2,77 +2,50 @@
   <v-card
     class="mx-auto my-12 rounded-xl"
     depressed
-    max-width="344"
+    max-width="400"
     flat
   >
-    <h1 class="title_card_name">About</h1>
-      <v-card-text class="about_text">
-        This is an app that is developed using Vue and Vuetify.  This app requires the API that will gather data from a provided feed and store it in a database.  This app will then take that data and put it into a visual format.
-      </v-card-text>
-    <v-card-actions>
-      <h3 class="mini_title">Resources</h3>
-      <v-spacer></v-spacer>
-
-      <v-btn
-        icon
-        @click="show = !show"
-      >
-        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-      </v-btn>
-    </v-card-actions>
-    <v-expand-transition>
-      <div v-show="show" style="height: 180px;">
-
-        <v-card-actions style="place-content: center;">
-          <h4 style="color: #42b883; margin-right: 25px;">
-            Vue.js
-          </h4>
-          <v-btn
-            :ripple="false"
-            style="margin-left: 25px;"
-            id="no-background-hover"
-            class="about_button"
-            href="https://vuejs.org/"
-            target="_blank"
-            icon
-          >
-            <v-icon color="#42b883" class="about_button_icon" large>mdi-vuejs</v-icon>
-          </v-btn>
-        </v-card-actions>
-        <v-card-actions style="place-content: center;">
-          <h4 style="color: #409EFF; margin-right: 25px;">
-            Vuetify
-          </h4>
-          <v-btn
-            :ripple="false"
-            style="margin-left: 25px;"
-            id="no-background-hover"
-            class="about_button"
-            href="https://vuetifyjs.com/en/styles/colors/"
-            target="_blank"
-            icon
-          >
-            <v-icon color="#409EFF" class="about_button_icon" large>mdi-vuetify</v-icon>
-          </v-btn>
-        </v-card-actions>
-        <v-card-actions style="place-content: center;">
-          <h4 style="color: #DC143C; margin-right: 25px;">
-            Sports Data (Barstool Sports)
-          </h4>
-          <v-btn
-            :ripple="false"
-            style="margin-left: 25px;"
-            id="no-background-hover"
-            class="about_button"
-            href="https://vuetifyjs.com/en/styles/colors/"
-            target="_blank"
-            icon
-          >
-            <v-icon color="#DC143C" class="about_button_icon" large>fa-football-ball</v-icon>
-          </v-btn>
-        </v-card-actions>
-      </div>
-    </v-expand-transition>
+    <swiper class="swiper" :options="swiperOption">
+      <swiper-slide>
+        <h1 class="title_card_name">Blockchain Meets <br/> History</h1>
+        <v-card-text class="about_text">
+        Buy, sell, or trade your Crypto-History Card like it was a traditional collectible using 
+        blockchain technology.  
+        Bitcoin and ether are cryptocurrencies but a Crypto-History card is a cryptocollectibles.  
+        Be the only person in the world to own a piece of history featuring well-known icons from across time such as George Washington, 
+        Julius Caesar, and Ludwig Beethoven.       
+        </v-card-text>
+        <div style="text-align: -webkit-center; margin-bottom: 25px;">
+          <v-img style="max-width: 40%;" src="../../assets/new-solider.png"></v-img>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <h1 class="title_card_name" style="margin-top: 25px;">How It Works<br/></h1>
+        <v-card-text class="about_text" style="margin-top: 35px;">
+          Crypto-History runs on the same blockchain technology as Ethereum. 
+          Just like each individual coin, each Crypto History card is linked to one, and only one,
+          token.     
+        </v-card-text>
+        <div style="text-align: -webkit-center;">
+          <v-img style="max-width: 40%;" src="../../assets/mini-logos.png"></v-img>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <h1 class="title_card_name" style="margin-top: 25px;">Learn More!<br/></h1>
+        <div class="container info-col">
+          <div style="text-align: -webkit-center;">
+            <v-img class='image_info' src="../../assets/ethereum.png"  @click="openEr()"></v-img>
+          </div>
+          <div style="text-align: -webkit-center;">
+            <v-img class='image_info' src="../../assets/npr-logo.png" @click="openNPR()"></v-img>
+          </div>
+          <div>
+            <p class="information-text">Links are not endorsements, but provide more information about NFTs.</p>
+          </div>
+        </div>
+      </swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
+    </swiper>
   </v-card>
 </template>
 <script>
@@ -80,7 +53,21 @@
     name: "About",
     data: () => ({
       show: false,
+        swiperOption: {
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+          }
+        },
     }),
+    methods: {
+      openNPR: function() {  
+          window.open("https://www.npr.org/2021/03/05/974089381/whats-an-nft-and-why-are-people-paying-millions-to-buy-them", "_blank");    
+      },
+      openEr: function() {
+          window.open("https://ethereum.org/en/", "_blank");    
+      }
+    }
   }
 </script>
 <style scoped lang="scss">
@@ -92,12 +79,15 @@
 .about_text {
     position: relative;
     bottom: -8px;
+    width: 90% !important;
 }
 .title_card_name {
     font-family: 'Nunito', sans-serif;
-    margin-left: 5%;
+    text-align-last: center;
     position: relative;
+    line-height: 40px;
     bottom: -15px;
+    margin-bottom: 15px;
 }
 .mini_title {
     font-family: 'Nunito', sans-serif;
@@ -122,4 +112,21 @@
    background-color: transparent !important;
 }
 
+.information-text {
+    text-align: center;
+    font-size: small;
+    font-style: italic;
+    color: gray;
+}
+
+.info-col {
+  display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 370px;
+}
+.image_info {
+  max-width: 40%;
+  cursor: pointer;
+}
 </style>
