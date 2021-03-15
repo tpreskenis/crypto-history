@@ -16,7 +16,7 @@
         Julius Caesar, and Ludwig Beethoven.       
         </v-card-text>
         <div style="text-align: -webkit-center; margin-bottom: 25px;">
-          <v-img style="max-width: 40%;" src="../../assets/new-solider.png"></v-img>
+          <v-img style="max-width: 40%; margin-top: 10px; margin-bottom: 50px;" src="../../assets/example-card.png"></v-img>
         </div>
       </swiper-slide>
       <swiper-slide>
@@ -27,7 +27,7 @@
           token.     
         </v-card-text>
         <div style="text-align: -webkit-center;">
-          <v-img style="max-width: 40%;" src="../../assets/mini-logos.png"></v-img>
+          <v-img style="max-width: 55%; margin-top: 20px;" src="../../assets/hand-holding-phone.png"></v-img>
         </div>
       </swiper-slide>
       <swiper-slide>

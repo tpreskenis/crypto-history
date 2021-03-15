@@ -1,4 +1,5 @@
 <template>
+<div>
   <v-card
     class="mx-auto my-12 rounded-xl"
     depressed
@@ -10,25 +11,18 @@
     <div style="text-align: -webkit-center;">
         <v-img style="max-width: 40%;" src="../../assets/Crypto-history-logo.png"></v-img>
     </div>
-    <v-card-actions style="place-content: center;">
-      <v-btn
-        icon
-        @click="show = !show"
-      >
-        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-      </v-btn>
-    </v-card-actions>
-    <v-expand-transition>
-      <div v-show="show" style="height: 120px;">
-        <v-card-actions style="place-content: center;">
-      <v-card-text class="about_text">
-        Buy and sell Crypto-History! <br/>
-        From George Washington to Tutankhamun, collect unique history icon collectibles!
-      </v-card-text>
-        </v-card-actions>
-      </div>
-    </v-expand-transition>
   </v-card>
+    <div style="text-align: center;">
+        <v-btn
+        fab
+        large
+        style="margin-bottom: 15px;"
+        @click="openCrypto()"
+      >
+        <v-icon color="primary" large>fa-store</v-icon>
+      </v-btn>
+    </div>
+</div>
 </template>
 <script>
   export default {
@@ -36,6 +30,11 @@
     data: () => ({
       show: false,
     }),
+    methods: {
+      openCrypto: function() {  
+          window.open("https://opensea.io/accounts/Crypto-History", "_blank");    
+      },
+    }
   }
 </script>
 <style scoped lang="scss">

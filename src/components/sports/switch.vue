@@ -56,7 +56,7 @@ export default {
   position: relative;
   display: block;
   width: 330px;
-  margin: 3rem auto 0;
+  margin: 6rem auto 0;
   .option_one{
     width: 165px;
     height: 50px;
