@@ -9,7 +9,7 @@
     <h1 class="welcom_title">Welcome to</h1>
     <h1 class="title_card_name">Crypto History</h1>
     <div style="text-align: -webkit-center;">
-        <v-img style="max-width: 40%;" src="../../assets/crypto-history-logo.png"></v-img>
+        <v-img style="max-width: 40%;" src="../../assets/logo.png"></v-img>
     </div>
   </v-card>
     <div style="text-align: center;">

@@ -1,7 +1,7 @@
 # Crypto History Website
 
 <div align="center">
-    <img src="src\assets\crypto-history-logo.png" width="200">
+    <img src="src\assets\logo.png" width="200">
 </div>
 <div align="center">
 The follwing is a front end application built off of vue.  It was made to be a home website for NFTs based off of US History.  The application is also built around using an iPhone X with touch screen, but also works on desktop. 
