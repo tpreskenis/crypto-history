@@ -27,7 +27,7 @@ import waves from './components/waves'
 
 import welcomeLayout from './components/welcome/layout';
 import infoLayout from './components/info/layout';
-import sportsLayout from './components/sports/layout';
+import sportsLayout from './components/main/layout';
 
 
 export default {

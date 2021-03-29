@@ -39,7 +39,7 @@
 }
 .title_card_name {
     font-family: 'Nunito', sans-serif;
-    text-align-last: center;
+    text-align: center;  
     position: relative;
     line-height: 40px;
     bottom: -15px;

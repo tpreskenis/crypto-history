@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="padding-bottom: 55px;">
     <notification/>
     <store-button/>
     <information-ame/>
